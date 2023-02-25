@@ -24,9 +24,34 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>いいねボタン</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   </head>
+
+
+
   <body>
+    <!-- Reactコンポーネントが表示されるDOMコンテナ・・・よくわかんない -->
+    <div id="nameInputContainer"></div>
+
+    <script type="text/babel">
+      const NameInput = () => {
+        const[name, setName] = React.useState("○○");
+        const handleOnchange = (event) => setName(event.target.value);
+        return (
+          <div>
+            <input type="text" onChange={handleOnchange} />
+            <p>こんにちは,{name}さん</p>
+
+          </div>
+        )
+      };
+      const domContainer = document.querySelector("#nameInputContainer");
+      ReactDOM.render(<NameInput />, domContainer);
+    </script>
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -39,5 +64,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
   </body>
 </html>
